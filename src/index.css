@@ -100,7 +100,8 @@ h6 {
   align-items: center;
 }
 
-.game__team > img {
+.game__team > img,
+.player__team > img {
   width: 40px;
   aspect-ratio: 1;
   object-fit: cover;
