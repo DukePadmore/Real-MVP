@@ -9,7 +9,6 @@ const Players = () => {
   const handleSubmit = e => {
     e.preventDefault();
     searchPlayer(playerSearch.toLowerCase());
-    console.log(playersData);
   };
   const searchPlayer = async player => {
     const { data } = await ballDontLie.get(
@@ -19,7 +18,7 @@ const Players = () => {
   };
 
   return (
-    <>
+    <div className='players'>
       <form action='' onSubmit={handleSubmit}>
         <input
           type='text'
@@ -35,7 +34,7 @@ const Players = () => {
           team_logo={logos[player.team.abbreviation]}
         />
       ))}
-    </>
+    </div>
   );
 };
 

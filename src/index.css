@@ -77,8 +77,11 @@ h6 {
   height: 100%;
 }
 
-.scores {
+.scores,
+.teams,
+.players {
   height: 90%;
+  overflow-y: scroll;
 }
 
 .game {
@@ -101,10 +104,14 @@ h6 {
 }
 
 .game__team > img,
-.player__team > img {
-  width: 40px;
+.player__team > img,
+.team-logo {
+  width: 50px;
   aspect-ratio: 1;
   object-fit: cover;
+  background-color: #fff;
+  padding: 0.1rem;
+  border-radius: 50%;
 }
 
 .game__team > h3,
@@ -120,4 +127,9 @@ h6 {
   gap: 1rem;
   background-color: #191919;
   border-top: 1px solid #252525;
+}
+
+.teams {
+  display: grid;
+  grid-template-columns: repeat(3, 32%);
 }
