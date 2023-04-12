@@ -4,20 +4,20 @@ import Game from '../components/Game';
 import { ballDontLie } from '../utils/axios';
 import logos from '../assets/index';
 
-const Scores = () => {
+const Games = () => {
   const [games, setGames] = useState([]);
   const [selectedDate, setSelectedDate] = useState();
 
-  const getScores = async () => {
+  const getGames = async () => {
     const { data } = await ballDontLie.get('games?dates[]=2023-03-28');
     setGames(data.data);
   };
 
   console.log(games);
   return (
-    <div className='scores'>
+    <div className='games'>
       <Calendar />
-      <button onClick={getScores}></button>
+      <button onClick={getGames}></button>
       {games.map(game => (
         <Game
           key={game.id}
@@ -30,4 +30,4 @@ const Scores = () => {
   );
 };
 
-export default Scores;
+export default Games;

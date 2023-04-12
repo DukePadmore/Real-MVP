@@ -1,14 +1,14 @@
 import NavBar from './components/NavBar';
 import Players from './pages/Players';
-import Scores from './pages/Scores';
+import Games from './pages/Games';
 import Teams from './pages/Teams';
 
 function App() {
   return (
     <div className='App'>
-      {/* <Scores /> */}
+      <Games />
       {/* <Players /> */}
-      <Teams />
+      {/* <Teams /> */}
       <NavBar />
     </div>
   );

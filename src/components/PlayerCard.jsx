@@ -32,18 +32,16 @@ const PlayerCard = ({
       </div>
       <div className='player__info'>
         <h3 className='player__name'>{`${first_name} ${last_name}`}</h3>
-        <div className=''>
-          <p className='player__position'>
-            {position ? position : 'position unknown'}
-          </p>
-          <p className='player__height'>
+        <div className='player__details'>
+          <span className='player__position'>{position ? position : ''}</span>
+          <span className='player__height'>
             {height_feet && height_inches
-              ? `${height_feet}'${height_inches}`
-              : 'height unknown'}
-          </p>
-          <p className='player__weight'>
-            {weight_pounds ? weight_pounds : 'weight unknown'}
-          </p>
+              ? ` - ${height_feet}'${height_inches} - `
+              : ''}
+          </span>
+          <span className='player__weight'>
+            {weight_pounds ? weight_pounds : ''}
+          </span>
         </div>
       </div>
     </article>
