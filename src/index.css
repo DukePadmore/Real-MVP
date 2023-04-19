@@ -165,3 +165,23 @@ h6 {
   display: flex;
   gap: 0.5rem;
 }
+
+.calendar {
+  width: 100%;
+  text-align: center;
+}
+
+.calendar__week {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.calendar__day.selected {
+  border-bottom: 1px solid orange;
+}
+
+.day-letter,
+.day-number {
+  display: inline-block;
+}
