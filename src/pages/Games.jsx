@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import Calendar from '../components/Calendar';
-import Game from '../components/Game';
-import logos from '../assets/index';
-import { ballDontLie } from '../utils/axios';
 import { format, add, sub } from 'date-fns';
+import { ballDontLie } from '../utils/axios';
+import logos from '../assets/index';
+import Left from '../assets/icons/chevron-left.svg';
+import Right from '../assets/icons/chevron-right.svg';
+import Game from '../components/Game';
 
 const Games = () => {
   const [games, setGames] = useState([]);
@@ -27,6 +28,7 @@ const Games = () => {
 
   useEffect(() => {
     getGames();
+    console.log(games);
   }, [selectedDate]);
 
   return (
@@ -34,6 +36,15 @@ const Games = () => {
       <div className='calendar'>
         <h2>{format(selectedDate, 'MMMM')}</h2>
         <div className='calendar__week'>
+          <div className='arrows'>
+            <img
+              src={Left}
+              alt='arrow left'
+              onClick={() => {
+                setSelectedDate(sub(selectedDate, { days: 1 }));
+              }}
+            />
+          </div>
           {days.map(day => (
             <div
               key={day}
@@ -48,6 +59,14 @@ const Games = () => {
               <span className='day-number'>{format(day, 'dd')}</span>
             </div>
           ))}
+          <div
+            className='arrows'
+            onClick={() => {
+              setSelectedDate(add(selectedDate, { days: 1 }));
+            }}
+          >
+            <img src={Right} alt='arrow right' />
+          </div>
         </div>
       </div>
       {games.map(game => (

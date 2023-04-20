@@ -23,14 +23,6 @@ const NavBar = () => {
         <img src={CalendarLogo} alt='games' />
         <p>Games</p>
       </NavLink>
-      {/* <div className='navbar__item'>
-        <img src={PlayerLogo} alt='players' />
-        <p>Players</p>
-      </div> */}
-      {/* <div className='navbar__item'>
-        <img src={CalendarLogo} alt='games' />
-        <p>Games</p>
-      </div> */}
     </div>
   );
 };

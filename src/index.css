@@ -173,7 +173,14 @@ h6 {
 
 .calendar__week {
   display: flex;
-  gap: 2rem;
+  gap: 1.3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar__day {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
