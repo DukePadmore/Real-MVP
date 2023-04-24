@@ -1,4 +1,7 @@
+import axios from 'axios';
 import { ballDontLie } from '../utils/axios';
+import playersData from '../utils/playersData.json';
+import { useEffect, useState } from 'react';
 
 const PlayerCard = ({
   id,
@@ -10,42 +13,52 @@ const PlayerCard = ({
   weight_pounds,
   team,
   team_logo,
+  setData,
+  setPic,
+  additionalData,
 }) => {
   const handleClick = () => {
     displayPlayer(id);
   };
 
-  // fonction permettant de récupérer les stats du joueur
-  // à travailler : affiche par défaut la saison actuelle, renvoie un tableau vide si le joueur n'est plus actif
-  // trouver un moyen de récupérer également la photo du joueur
+  // const [playerLocalData, setPlayerLocalData] = useState(null);
+  // useEffect(() => {
+  //   setPlayerLocalData(
+  //     playersData.filter(
+  //       player =>
+  //         (player.firstName === first_name) & (player.lastName === last_name)
+  //     )[0]
+  //   );
+  // }, []);
+
   const displayPlayer = async playerId => {
     const { data } = await ballDontLie.get(
-      `season_averages?season=2020&player_ids[]=${playerId}`
+      `season_averages?season=2022&player_ids[]=${playerId}`
     );
-    console.log(data);
+    setData(data.data);
   };
 
   return (
     <article className='player__card' onClick={handleClick}>
       <div className='player__team'>
-        <img src={team_logo} alt={team.abbreviation} />
+        <img
+          src={
+            additionalData
+              ? `https://cdn.nba.com/headshots/nba/latest/1040x760/${additionalData.personId}.png?imwidth=320&imheight=234`
+              : team_logo
+          }
+          alt={team.abbreviation}
+        />
       </div>
       <div className='player__info'>
         <h3 className='player__name'>{`${first_name} ${last_name}`}</h3>
         <div className='player__details'>
-          <span className='player__position'>{position ? position : ''}</span>
-          <span className='player__height'>
-            {height_feet && height_inches
-              ? ` - ${height_feet}'${height_inches} - `
-              : ''}
-          </span>
-          <span className='player__weight'>
-            {weight_pounds ? weight_pounds : ''}
-          </span>
+          <span className='player__position'>{position}</span>
+          <span className='player__height'>{}</span>
+          <span className='player__weight'>{}</span>
         </div>
       </div>
     </article>
   );
 };
-
 export default PlayerCard;

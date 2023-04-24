@@ -19,16 +19,19 @@ const Games = () => {
     add(selectedDate, { days: 3 }),
   ];
 
-  async function getGames() {
-    const { data } = await ballDontLie.get(
-      `games?dates[]=${format(selectedDate, 'yyyy-MM-dd')}`
-    );
-    setGames(data.data);
-  }
+  const getGames = async () => {
+    try {
+      const { data } = await ballDontLie.get(
+        `games?dates[]=${format(selectedDate, 'yyyy-MM-dd')}`
+      );
+      setGames(data.data);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   useEffect(() => {
     getGames();
-    console.log(games);
   }, [selectedDate]);
 
   return (
