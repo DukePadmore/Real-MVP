@@ -3,14 +3,21 @@ import playersData from '../utils/playersData.json';
 import PlayerCard from '../components/PlayerCard';
 import { ballDontLie } from '../utils/axios';
 import logos from '../assets';
+import PlayerDetails from '../components/PlayerDetails';
 
 const Players = () => {
   const [search, setSearch] = useState('');
   const [players, setPlayers] = useState([]);
+  const [stats, setStats] = useState(null);
+  const [selectedPlayer, setSelectedPlayer] = useState(null);
 
   const handleSubmit = e => {
     e.preventDefault();
+    if (!search) {
+      return;
+    }
     getPlayers(search.toLowerCase());
+    setStats(null);
   };
 
   const getPlayers = async name => {
@@ -35,25 +42,33 @@ const Players = () => {
     }
   };
 
-  console.log(players);
+  console.log(selectedPlayer);
+  console.log(stats);
 
   return (
     <div className='players'>
-      <form action='' onSubmit={handleSubmit}>
-        <input
-          type='text'
-          name='player-search'
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-        />
-      </form>
-      {players.map(player => (
-        <PlayerCard
-          key={player.id}
-          team_logo={logos[player.team.abbreviation]}
-          {...player}
-        />
-      ))}
+      {!stats && (
+        <form className='players__form' action='' onSubmit={handleSubmit}>
+          <input
+            className='players__input'
+            type='text'
+            name='player-search'
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+          />
+        </form>
+      )}
+      {!stats &&
+        players.map(player => (
+          <PlayerCard
+            key={player.id}
+            team_logo={logos[player.team.abbreviation]}
+            setStats={setStats}
+            setSelectedPlayer={setSelectedPlayer}
+            {...player}
+          />
+        ))}
+      {stats && <PlayerDetails stats={stats} selectedPlayer={selectedPlayer} />}
     </div>
   );
 };

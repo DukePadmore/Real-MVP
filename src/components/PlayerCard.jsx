@@ -13,34 +13,36 @@ const PlayerCard = ({
   weight_pounds,
   team,
   team_logo,
-  setData,
+  setStats,
   setPic,
   additionalData,
+  setSelectedPlayer,
 }) => {
   const handleClick = () => {
     displayPlayer(id);
   };
 
-  // const [playerLocalData, setPlayerLocalData] = useState(null);
-  // useEffect(() => {
-  //   setPlayerLocalData(
-  //     playersData.filter(
-  //       player =>
-  //         (player.firstName === first_name) & (player.lastName === last_name)
-  //     )[0]
-  //   );
-  // }, []);
-
   const displayPlayer = async playerId => {
     const { data } = await ballDontLie.get(
       `season_averages?season=2022&player_ids[]=${playerId}`
     );
-    setData(data.data);
+    setStats(data.data[0]);
+    setSelectedPlayer({
+      id,
+      first_name,
+      last_name,
+      position,
+      height_feet,
+      height_inches,
+      weight_pounds,
+      team,
+      additionalData,
+    });
   };
 
   return (
-    <article className='player__card' onClick={handleClick}>
-      <div className='player__team'>
+    <article className='player-card' onClick={handleClick}>
+      <div className='player-card__pic'>
         <img
           src={
             additionalData
@@ -50,12 +52,12 @@ const PlayerCard = ({
           alt={team.abbreviation}
         />
       </div>
-      <div className='player__info'>
-        <h3 className='player__name'>{`${first_name} ${last_name}`}</h3>
-        <div className='player__details'>
-          <span className='player__position'>{position}</span>
-          <span className='player__height'>{}</span>
-          <span className='player__weight'>{}</span>
+      <div className='player-card__info'>
+        <h3 className='player-card__name'>{`${first_name} ${last_name}`}</h3>
+        <div className='player-card__details'>
+          <span className='player-card__position'>{position}</span>
+          <span className='player-card__height'>{}</span>
+          <span className='player-card__weight'>{}</span>
         </div>
       </div>
     </article>

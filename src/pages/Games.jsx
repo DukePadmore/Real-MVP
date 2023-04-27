@@ -34,6 +34,8 @@ const Games = () => {
     getGames();
   }, [selectedDate]);
 
+  console.log(games);
+
   return (
     <div className='games'>
       <div className='calendar'>
