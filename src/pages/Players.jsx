@@ -27,10 +27,14 @@ const Players = () => {
       );
       const completeData = [];
       for (const player of data.data) {
+        let pCode = `${player.first_name}_${player.last_name}`
+          .split('.')
+          .join('')
+          .split(' ')
+          .join('_')
+          .toLowerCase();
         const additionalData = playersData.find(
-          localPlayer =>
-            (localPlayer.firstName === player.first_name) &
-            (localPlayer.lastName === player.last_name)
+          localPlayer => localPlayer.teamSitesOnly?.playerCode === pCode
         );
         additionalData
           ? completeData.push({ ...player, additionalData })
@@ -68,7 +72,14 @@ const Players = () => {
             {...player}
           />
         ))}
-      {stats && <PlayerDetails stats={stats} selectedPlayer={selectedPlayer} />}
+      {stats && (
+        <PlayerDetails
+          stats={stats}
+          setStats={setStats}
+          selectedPlayer={selectedPlayer}
+          setSelectedPlayer={setSelectedPlayer}
+        />
+      )}
     </div>
   );
 };

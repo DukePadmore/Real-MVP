@@ -34,8 +34,6 @@ const Games = () => {
     getGames();
   }, [selectedDate]);
 
-  console.log(games);
-
   return (
     <div className='games'>
       <div className='calendar'>
@@ -50,20 +48,27 @@ const Games = () => {
               }}
             />
           </div>
-          {days.map(day => (
-            <div
-              key={day}
-              className={
-                day === selectedDate
-                  ? 'calendar__day selected'
-                  : 'calendar__day'
-              }
-              onClick={() => setSelectedDate(day)}
-            >
-              <span className='day-letter'>{format(day, 'EEEEE')}</span>
-              <span className='day-number'>{format(day, 'dd')}</span>
-            </div>
-          ))}
+          {days.map(day => {
+            let dayClass = 'calendar__day';
+            if (day === selectedDate) {
+              dayClass += ' selected';
+            }
+            if (
+              format(day, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd')
+            ) {
+              dayClass += ' today';
+            }
+            return (
+              <div
+                key={day}
+                className={dayClass}
+                onClick={() => setSelectedDate(day)}
+              >
+                <span className='day-letter'>{format(day, 'EEE')}</span>
+                <span className='day-number'>{format(day, 'dd')}</span>
+              </div>
+            );
+          })}
           <div
             className='arrows'
             onClick={() => {

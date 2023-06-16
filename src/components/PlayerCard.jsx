@@ -1,7 +1,4 @@
-import axios from 'axios';
 import { ballDontLie } from '../utils/axios';
-import playersData from '../utils/playersData.json';
-import { useEffect, useState } from 'react';
 
 const PlayerCard = ({
   id,
@@ -14,7 +11,6 @@ const PlayerCard = ({
   team,
   team_logo,
   setStats,
-  setPic,
   additionalData,
   setSelectedPlayer,
 }) => {
