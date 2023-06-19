@@ -16,3 +16,5 @@ export const colorShift = (hexColor, strength) => {
     return hexColor;
   }
 };
+
+export const roundOneDecimal = number => +number.toFixed(1);

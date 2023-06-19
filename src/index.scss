@@ -156,10 +156,6 @@ h6 {
   text-align: center;
 }
 
-// .players {
-//   margin: 0 0.5rem;
-// }
-
 .player-card {
   margin: 0.5rem auto;
   width: 95%;
@@ -171,16 +167,6 @@ h6 {
   padding: 0.5rem;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
-.player-card__pic > img {
-  background-color: rgba(255, 255, 255, 0.532);
-  background: rgb(249, 248, 233);
-  background: linear-gradient(
-    45deg,
-    rgba(249, 248, 233, 1) 0%,
-    rgba(230, 210, 196, 1) 100%
-  );
 }
 
 .calendar {
@@ -230,13 +216,15 @@ h6 {
   display: flex;
   align-items: flex-end;
   justify-content: space-around;
-  padding-left: 2rem;
+  padding-left: 1rem;
   background-repeat: no-repeat;
-  background-size: 45%;
+  background-size: 35%;
+  background-position: 5% 5%;
   position: relative;
 }
 
 .player-details__exit {
+  z-index: 3;
   position: absolute;
   top: 5px;
   right: 15px;
@@ -244,17 +232,29 @@ h6 {
 }
 
 .player-details__name {
-  font-size: 1rem;
-  opacity: 0.9;
+  margin-bottom: 0.2rem;
+  font-size: 0.8rem;
+  opacity: 0.8;
   color: #fff;
 }
 
 .player-details__image {
-  height: 150px;
+  z-index: 2;
+  height: 75%;
   overflow: hidden;
 }
 
-.player-details__image > img {
+.player-details__logo {
+  height: 100%;
+  z-index: 1;
+  opacity: 0.1;
+  position: absolute;
+  top: -20px;
+  right: 20px;
+}
+
+.player-details__image > img,
+.player-details__logo > img {
   height: 100%;
 }
 

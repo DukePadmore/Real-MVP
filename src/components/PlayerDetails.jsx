@@ -2,7 +2,7 @@ import { useState } from 'react';
 import logos from '../assets';
 import teamsData from '../utils/teamsData.json';
 import { ballDontLie } from '../utils/axios';
-import { colorShift } from '../utils/colorShift';
+import { colorShift, roundOneDecimal } from '../utils/utilityFunctions';
 
 const PlayerDetails = ({
   stats,
@@ -51,13 +51,21 @@ const PlayerDetails = ({
         >
           x
         </span>
-        <h2 className='player-details__name'>{`${selectedPlayer.first_name} ${selectedPlayer.last_name}`}</h2>
+        <div className='player-details__name'>
+          <h2>{selectedPlayer.first_name}</h2>
+          <h2>{selectedPlayer.last_name}</h2>
+        </div>
         <div className='player-details__image'>
           <img
             src={`https://cdn.nba.com/headshots/nba/latest/1040x760/${selectedPlayer.additionalData.personId}.png?imwidth=320&imheight=234`}
             alt=''
           />
         </div>
+        {/* TEST */}
+        <div className='player-details__logo'>
+          <img src={logos[selectedPlayer.team.abbreviation]} alt='' />
+        </div>
+        {/* END OF TEST */}
       </div>
       <div className='player-details__bottom-container'>
         <div className='bottom-container__box'>
@@ -75,7 +83,7 @@ const PlayerDetails = ({
             <div className='details__element'>
               <p className='element__label'>weight</p>
               <p className='element__data'>
-                {selectedPlayer.additionalData.weightKilograms}kg
+                {Math.round(selectedPlayer.additionalData.weightKilograms)}kg
               </p>
             </div>
             <div className='details__element'>
@@ -116,51 +124,59 @@ const PlayerDetails = ({
               </div>
               <div className='stats__element'>
                 <p className='element__label'>PTS</p>
-                <p className='element__data'>{stats.pts}</p>
+                <p className='element__data'>{roundOneDecimal(stats.pts)}</p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>REB</p>
-                <p className='element__data'>{stats.reb}</p>
+                <p className='element__data'>{roundOneDecimal(stats.reb)}</p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>OREB</p>
-                <p className='element__data'>{stats.oreb}</p>
+                <p className='element__data'>{roundOneDecimal(stats.oreb)}</p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>DREB</p>
-                <p className='element__data'>{stats.dreb}</p>
+                <p className='element__data'>{roundOneDecimal(stats.dreb)}</p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>AST</p>
-                <p className='element__data'>{stats.ast}</p>
+                <p className='element__data'>{roundOneDecimal(stats.ast)}</p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>STL</p>
-                <p className='element__data'>{stats.stl}</p>
+                <p className='element__data'>{roundOneDecimal(stats.stl)}</p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>BLK</p>
-                <p className='element__data'>{stats.blk}</p>
+                <p className='element__data'>{roundOneDecimal(stats.blk)}</p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>TO</p>
-                <p className='element__data'>{stats.turnover}</p>
+                <p className='element__data'>
+                  {roundOneDecimal(stats.turnover)}
+                </p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>PF</p>
-                <p className='element__data'>{stats.pf}</p>
+                <p className='element__data'>{roundOneDecimal(stats.pf)}</p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>FG%</p>
-                <p className='element__data'>{stats.fg_pct}</p>
+                <p className='element__data'>
+                  {roundOneDecimal(stats.fg_pct * 100)}
+                </p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>3FG%</p>
-                <p className='element__data'>{stats.fg3_pct}</p>
+                <p className='element__data'>
+                  {roundOneDecimal(stats.fg3_pct * 100)}
+                </p>
               </div>
               <div className='stats__element'>
                 <p className='element__label'>FT%</p>
-                <p className='element__data'>{stats.ft_pct}</p>
+                <p className='element__data'>
+                  {roundOneDecimal(stats.ft_pct * 100)}
+                </p>
               </div>
             </div>
           )}

@@ -1,4 +1,6 @@
 import { ballDontLie } from '../utils/axios';
+import teamsData from '../utils/teamsData.json';
+import { colorShift } from '../utils/utilityFunctions';
 
 const PlayerCard = ({
   id,
@@ -36,6 +38,9 @@ const PlayerCard = ({
     });
   };
 
+  const color = teamsData.find(t => t.abbreviation === team.abbreviation).color;
+  const secondColor = colorShift(color, 70);
+
   return (
     <article className='player-card' onClick={handleClick}>
       <div className='player-card__pic'>
@@ -46,6 +51,9 @@ const PlayerCard = ({
               : team_logo
           }
           alt={team.abbreviation}
+          style={{
+            background: `radial-gradient(circle, ${secondColor} 40%, ${color} 90%`,
+          }}
         />
       </div>
       <div className='player-card__info'>
