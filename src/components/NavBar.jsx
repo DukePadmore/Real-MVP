@@ -9,29 +9,41 @@ const NavBar = () => {
       <NavLink
         to='/players'
         className={({ isActive, isPending }) =>
-          isPending ? 'navbar__item' : isActive ? 'navbar__item active' : ''
+          isPending
+            ? 'navbar__item'
+            : isActive
+            ? 'navbar__item active'
+            : 'navbar__item'
         }
       >
         <img src={PlayerLogo} alt='players' />
-        <p>Players</p>
+        {/* <p>Players</p> */}
       </NavLink>
       <NavLink
         to='/'
         className={({ isActive, isPending }) =>
-          isPending ? 'navbar__item' : isActive ? 'navbar__item active' : ''
+          isPending
+            ? 'navbar__item'
+            : isActive
+            ? 'navbar__item active'
+            : 'navbar__item'
         }
       >
         <img src={CalendarLogo} alt='games' />
-        <p>Games</p>
+        {/* <p>Games</p> */}
       </NavLink>
       <NavLink
         to='/teams'
         className={({ isActive, isPending }) =>
-          isPending ? 'navbar__item' : isActive ? 'navbar__item active' : ''
+          isPending
+            ? 'navbar__item'
+            : isActive
+            ? 'navbar__item active'
+            : 'navbar__item'
         }
       >
         <img src={TeamLogo} alt='teams' />
-        <p>Teams</p>
+        {/* <p>Teams</p> */}
       </NavLink>
     </div>
   );

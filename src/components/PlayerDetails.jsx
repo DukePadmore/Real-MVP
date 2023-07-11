@@ -61,11 +61,9 @@ const PlayerDetails = ({
             alt=''
           />
         </div>
-        {/* TEST */}
         <div className='player-details__logo'>
           <img src={logos[selectedPlayer.team.abbreviation]} alt='' />
         </div>
-        {/* END OF TEST */}
       </div>
       <div className='player-details__bottom-container'>
         <div className='bottom-container__box'>
@@ -131,13 +129,13 @@ const PlayerDetails = ({
                 <p className='element__data'>{roundOneDecimal(stats.reb)}</p>
               </div>
               <div className='stats__element'>
-                <p className='element__label'>OREB</p>
+                <p className='element__label'>O.REB</p>
                 <p className='element__data'>{roundOneDecimal(stats.oreb)}</p>
               </div>
-              <div className='stats__element'>
+              {/* <div className='stats__element'>
                 <p className='element__label'>DREB</p>
                 <p className='element__data'>{roundOneDecimal(stats.dreb)}</p>
-              </div>
+              </div> */}
               <div className='stats__element'>
                 <p className='element__label'>AST</p>
                 <p className='element__data'>{roundOneDecimal(stats.ast)}</p>

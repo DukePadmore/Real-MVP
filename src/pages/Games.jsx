@@ -4,6 +4,8 @@ import { ballDontLie } from '../utils/axios';
 import logos from '../assets/index';
 import Left from '../assets/icons/chevron-left.svg';
 import Right from '../assets/icons/chevron-right.svg';
+import DoubleLeft from '../assets/icons/chevrons-left.svg';
+import DoubleRight from '../assets/icons/chevrons-right.svg';
 import Game from '../components/Game';
 
 const Games = () => {
@@ -37,14 +39,33 @@ const Games = () => {
   return (
     <div className='games'>
       <div className='calendar'>
-        <h2>{format(selectedDate, 'MMMM')}</h2>
+        <div className='calendar__month'>
+          <div className='arrows'>
+            <img
+              src={DoubleLeft}
+              alt='arrow left'
+              onClick={() => {
+                setSelectedDate(sub(selectedDate, { months: 1 }));
+              }}
+            />
+          </div>
+          <h2>{format(selectedDate, 'MMMM')}</h2>
+          <div
+            className='arrows'
+            onClick={() => {
+              setSelectedDate(add(selectedDate, { months: 1 }));
+            }}
+          >
+            <img src={DoubleRight} alt='arrow right' />
+          </div>
+        </div>
         <div className='calendar__week'>
           <div className='arrows'>
             <img
               src={Left}
               alt='arrow left'
               onClick={() => {
-                setSelectedDate(sub(selectedDate, { days: 1 }));
+                setSelectedDate(sub(selectedDate, { days: 7 }));
               }}
             />
           </div>
@@ -72,7 +93,7 @@ const Games = () => {
           <div
             className='arrows'
             onClick={() => {
-              setSelectedDate(add(selectedDate, { days: 1 }));
+              setSelectedDate(add(selectedDate, { days: 7 }));
             }}
           >
             <img src={Right} alt='arrow right' />
