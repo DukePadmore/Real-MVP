@@ -3,6 +3,7 @@ import logos from '../assets';
 import teamsData from '../utils/teamsData.json';
 import { ballDontLie } from '../utils/axios';
 import { colorShift, roundOneDecimal } from '../utils/utilityFunctions';
+import Left from '../assets/icons/chevron-left-white.svg';
 
 const PlayerDetails = ({
   stats,
@@ -42,7 +43,7 @@ const PlayerDetails = ({
           backgroundImage: `url(${logos[selectedPlayer.team.abbreviation]})`,
         }}
       >
-        <span
+        {/* <div
           className='player-details__exit'
           onClick={() => {
             setStats(null);
@@ -50,7 +51,16 @@ const PlayerDetails = ({
           }}
         >
           x
-        </span>
+        </div> */}
+        <img
+          src={Left}
+          alt='back-button'
+          className='player-details__exit'
+          onClick={() => {
+            setStats(null);
+            setSelectedPlayer(null);
+          }}
+        />
         <div className='player-details__name'>
           <h2>{selectedPlayer.first_name}</h2>
           <h2>{selectedPlayer.last_name}</h2>

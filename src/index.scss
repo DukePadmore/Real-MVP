@@ -243,9 +243,16 @@ h6 {
 .player-details__exit {
   z-index: 3;
   position: absolute;
-  top: 5px;
-  right: 15px;
+  top: 9px;
+  left: 15px;
   color: #fff;
+  height: 20px;
+  width: 20px;
+  background-color: rgba(1, 1, 1, 0.2);
+  border-radius: 100%;
+  line-height: 1;
+  text-align: center;
+  padding-right: 0.1rem;
 }
 
 .player-details__name {
