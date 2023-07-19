@@ -295,8 +295,9 @@ h6 {
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.bottom-container__box select {
+.stats-select {
   border: none;
+  font-size: 0.9rem;
 }
 
 .details-container {
@@ -307,10 +308,6 @@ h6 {
 }
 
 .stats-container {
-  // display: flex;
-  // flex-wrap: wrap;
-  // align-items: center;
-  // gap: 1.6rem;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -318,11 +315,33 @@ h6 {
   gap: 1rem;
 }
 
-.element__label {
-  font-size: 0.8rem;
+.stats-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.3rem;
+  padding: 0 0.2rem;
+}
+
+.stats-label > p {
+  font-weight: bold;
+}
+
+.element__label,
+.stats-select {
   color: #6d7075;
 }
 
+.element__label {
+  font-size: 0.75rem;
+}
+
+.details__element > .element__data {
+  font-size: 1rem;
+}
+.stats__element .element__data {
+  font-size: 1.1rem;
+}
+
 .element__data {
-  font-weight: bold;
+  font-weight: 600;
 }
