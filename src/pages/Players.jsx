@@ -23,8 +23,9 @@ const Players = () => {
   const getPlayers = async name => {
     try {
       const { data } = await ballDontLie.get(
-        `/players?search=${name}&per_page=30`
+        `/players?search=${name}&per_page=100`
       );
+      console.log(data.data);
       const completeData = [];
       for (const player of data.data) {
         let pCode = `${player.first_name}_${player.last_name}`
@@ -36,9 +37,9 @@ const Players = () => {
         const additionalData = playersData.find(
           localPlayer => localPlayer.teamSitesOnly?.playerCode === pCode
         );
-        additionalData
-          ? completeData.push({ ...player, additionalData })
-          : completeData.push(player);
+        if (additionalData) {
+          completeData.push({ ...player, additionalData });
+        }
       }
       setPlayers(completeData);
     } catch (e) {
