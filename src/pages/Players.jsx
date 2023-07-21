@@ -52,6 +52,18 @@ const Players = () => {
 
   return (
     <div className='players'>
+      <div>
+        {!stats &&
+          players.map(player => (
+            <PlayerCard
+              key={player.id}
+              team_logo={logos[player.team.abbreviation]}
+              setStats={setStats}
+              setSelectedPlayer={setSelectedPlayer}
+              {...player}
+            />
+          ))}
+      </div>
       {!stats && (
         <form className='players__form' action='' onSubmit={handleSubmit}>
           <input
@@ -63,16 +75,6 @@ const Players = () => {
           />
         </form>
       )}
-      {!stats &&
-        players.map(player => (
-          <PlayerCard
-            key={player.id}
-            team_logo={logos[player.team.abbreviation]}
-            setStats={setStats}
-            setSelectedPlayer={setSelectedPlayer}
-            {...player}
-          />
-        ))}
       {stats && (
         <PlayerDetails
           stats={stats}

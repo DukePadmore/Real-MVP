@@ -220,6 +220,30 @@ h6 {
   display: inline-block;
 }
 
+.players {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.players__form {
+  display: flex;
+  justify-content: center;
+}
+
+.players__input {
+  width: 95%;
+  border: none;
+  padding: 0.3rem;
+  border-radius: 8px;
+  background-color: #636060;
+  color: #fff;
+}
+
+.players__input:focus {
+  outline: 0;
+}
+
 .player-details {
   height: 100%;
   width: 100%;
@@ -325,7 +349,7 @@ h6 {
 .stats-label {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.1rem;
   padding: 0 0.2rem;
 }
 

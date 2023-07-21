@@ -43,15 +43,6 @@ const PlayerDetails = ({
           backgroundImage: `url(${logos[selectedPlayer.team.abbreviation]})`,
         }}
       >
-        {/* <div
-          className='player-details__exit'
-          onClick={() => {
-            setStats(null);
-            setSelectedPlayer(null);
-          }}
-        >
-          x
-        </div> */}
         <img
           src={Left}
           alt='back-button'
